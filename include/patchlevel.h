@@ -1,22 +1,22 @@
-/*	SCCS Id: @(#)patchlevel.h	3.2	96/11/19	*/
+/*	SCCS Id: @(#)patchlevel.h	3.3	1999/11/27	*/
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
-/* NetHack 3.2.2 */
+/* NetHack 3.3.0 */
 #define VERSION_MAJOR	3
-#define VERSION_MINOR	2
+#define VERSION_MINOR	3
 /*
  * PATCHLEVEL is updated for each release.
  */
-#define PATCHLEVEL	2
+#define PATCHLEVEL	0
 /*
  * Incrementing EDITLEVEL can be used to force invalidation of old bones
  * and save files.
  */
-#define EDITLEVEL	0
+#define EDITLEVEL	19
 
 #define COPYRIGHT_BANNER_A \
-"NetHack, Copyright 1985-1996"
+"NetHack, Copyright 1985-1999"
 
 #define COPYRIGHT_BANNER_B \
 "         By Stichting Mathematisch Centrum and M. Stephenson."
@@ -34,17 +34,53 @@
  * PP = patch level, ee = edit level, L = literal suffix "L",
  * with all four numbers specified as two hexadecimal digits.
  */
-#define VERSION_COMPATIBILITY 0x03020200L
+#define VERSION_COMPATIBILITY 0x03030000L
 #endif
 
 /*****************************************************************************/
-/* Version 3.2.2 */
+/* Version 3.3.0 */
+
+/*
+ *  NetHack 3.3.0, December 10, 1999
+ *
+ *  Implement the differentiation of character class or role from the
+ *  character race.
+ *  Removal of the Elf class, in preference to the Elf as a race.
+ *  Introduction of Dwarves, Elves, Gnomes and Orcs as distinct races in
+ *  addition to the Human "norm".
+ *  Addition of the Monk and Ranger classes.
+ *  Integrate some of the features of several branch versions of the game,
+ *  notably NetHack--, NHplus, SLASH, and Slash'em.
+ *  Adopt "the wizard patch" spellcasting system.
+ *  Support for the Qt widget set.
+ *  Y2K fix: use 4 digit year values for the dates in the score file
+ *  updated COPYRIGHT_BANNER_A to reflect year of release.
+ *  Dozens of other bug fixes, and minor improvements.
+ */
+/* Version 3.3 */
+
+/*****************************************************************************/
+/* Version 3.2.3 */
+
+/*  Patch 3, December 10, 1999
+ *  Released simultaneously with 3.3.0 for the benefit of
+ *  ports and platforms that were unable to get working
+ *  versions of 3.3.0 ready prior to the year 2000. It
+ *  consisted of just a few bug fixes and offered no new
+ *  functionality changes over 3.2.2.
+ *
+ *  Y2K fix: use 4 digit year values for the dates in the score file
+ *  updated COPYRIGHT_BANNER_A to reflect year of release
+ *  Fatal Mac bug removed
+ *  DOS Makefile problem removed
+ *  several bugs that could potentially trigger crashes removed
+ */
 
 /*  Patch 2, December 10, 1996
  *  fix the `recover' utility
  *  fix priest/minion name overflow which could cause Astral Plane crashes
  *  avoid crash when hit by own thrown boomerang
- *    "     "    "   worn blindfold pushed off by applying cursed towel
+ *    "     "	 "   worn blindfold pushed off by applying cursed towel
  *  handle returning live Wizard correctly in deep dungeon levels
  *  don't occasionally display unseen areas of new levels during level change
  *  other minor display fixes
