@@ -1,0 +1,40 @@
+# BOF
+
+# there are no makefiles
+Makefile
+
+# c files
+*.o
+
+# special nethack generated files
+include/date.h
+include/dgn_comp.h
+include/lev_comp.h
+include/onames.h
+include/pm.h
+include/vis_tab.h
+src/Sysunix
+src/config.h-t
+src/hack.h-t
+src/monstr.c
+src/nethack
+src/vis_tab.c
+util/dgn_comp
+util/dgn_lex.c
+util/dgn_yacc.c
+util/lev_comp
+util/lev_lex.c
+util/lev_yacc.c
+util/makedefs
+util/recover
+
+# dat files
+dat/*
+#dat/*-fila.lev
+#dat/*-filb.lev
+#dat/*-goal.lev
+#dat/*-loca.lev
+#dat/*-strt.lev
+
+
+# EOF

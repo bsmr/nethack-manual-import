@@ -14,7 +14,7 @@
 # MAKE = make
 
 # make NetHack
-PREFIX	 = /usr
+PREFIX	 = /opt/nethack/3.4.3
 GAME     = nethack
 # GAME     = nethack.prg
 GAMEUID  = games
@@ -35,12 +35,12 @@ DIRPERM  = 0755
 # therefore there should not be anything in GAMEDIR that you want to keep
 # (if there is, you'll have to do the installation by hand or modify the
 # instructions)
-GAMEDIR  = $(PREFIX)/games/lib/$(GAME)dir
+GAMEDIR  = $(PREFIX)/lib/$(GAME)dir
 VARDIR  = $(GAMEDIR)
-SHELLDIR = $(PREFIX)/games
+SHELLDIR = $(PREFIX)/bin
 
 # per discussion in Install.X11 and Install.Qt
-VARDATND = 
+VARDATND =
 # VARDATND = x11tiles NetHack.ad pet_mark.xbm
 # VARDATND = x11tiles NetHack.ad pet_mark.xbm rip.xpm
 # for Atari/Gem
@@ -66,6 +66,7 @@ VARDAT = $(VARDATD) $(VARDATND)
 # will only work if setuid (or setgid) behavior is not desired or required.
 CHOWN = chown
 CHGRP = chgrp
+CHMOD = chmod
 
 #
 # end of configuration
@@ -193,18 +194,18 @@ dofiles:
 # set up their permissions
 	-( cd $(GAMEDIR) ; $(CHOWN) $(GAMEUID) $(GAME) recover ; \
 			$(CHGRP) $(GAMEGRP) $(GAME) recover )
-	chmod $(GAMEPERM) $(GAMEDIR)/$(GAME)
-	chmod $(EXEPERM) $(GAMEDIR)/recover
+	$(CHMOD) $(GAMEPERM) $(GAMEDIR)/$(GAME)
+	$(CHMOD) $(EXEPERM) $(GAMEDIR)/recover
 	-$(CHOWN) $(GAMEUID) $(SHELLDIR)/$(GAME)
 	$(CHGRP) $(GAMEGRP) $(SHELLDIR)/$(GAME)
-	chmod $(EXEPERM) $(SHELLDIR)/$(GAME)
+	$(CHMOD) $(EXEPERM) $(SHELLDIR)/$(GAME)
 
 dofiles-dlb: check-dlb
 	( cd dat ; cp nhdat $(DATNODLB) $(GAMEDIR) )
 # set up their permissions
 	-( cd $(GAMEDIR) ; $(CHOWN) $(GAMEUID) nhdat $(DATNODLB) ; \
 			$(CHGRP) $(GAMEGRP) nhdat $(DATNODLB) ; \
-			chmod $(FILEPERM) nhdat $(DATNODLB) )
+			$(CHMOD) $(FILEPERM) nhdat $(DATNODLB) )
 
 dofiles-nodlb:
 # copy over the game files
@@ -212,7 +213,7 @@ dofiles-nodlb:
 # set up their permissions
 	-( cd $(GAMEDIR) ; $(CHOWN) $(GAMEUID) $(DAT) ; \
 			$(CHGRP) $(GAMEGRP) $(DAT) ; \
-			chmod $(FILEPERM) $(DAT) )
+			$(CHMOD) $(FILEPERM) $(DAT) )
 
 update: $(GAME) recover $(VARDAT) dungeon spec_levs
 #	(don't yank the old version out from under people who're playing it)
@@ -239,14 +240,14 @@ install: $(GAME) recover $(VARDAT) dungeon spec_levs
 	-rmdir ./-p
 	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
 	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
-	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
+	$(CHMOD) $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
 # set up the game files
 	( $(MAKE) dofiles )
 # set up some additional files
 	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile
 	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile ; \
 			$(CHGRP) $(GAMEGRP) perm record logfile ; \
-			chmod $(FILEPERM) perm record logfile )
+			$(CHMOD) $(FILEPERM) perm record logfile )
 # and a reminder
 	@echo You may also want to reinstall the man pages via the doc Makefile.
 

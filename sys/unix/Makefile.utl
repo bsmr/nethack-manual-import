@@ -15,12 +15,12 @@
 
 # if you are using gcc as your compiler,
 #	uncomment the CC definition below if it's not in your environment
-# CC = gcc
+CC = gcc
 #
 #	For Bull DPX/2 systems at B.O.S. 2.0 or higher use the following:
 #
 # CC = gcc -ansi -D_BULL_SOURCE -D_XOPEN_SOURCE -D_POSIX_SOURCE
-# 
+#
 #	If you are using GCC 2.2.2 or higher on a DPX/2, just use:
 #
 # CC = gcc -ansi
@@ -89,11 +89,11 @@
 # flags for debugging:
 # CFLAGS = -g -I../include
 
-CFLAGS = -O -I../include
+CFLAGS = -O2 -I../include
 LFLAGS =
 
 LIBS =
- 
+
 # If you are cross-compiling, you must use this:
 #OBJDIR = .
 # otherwise, you can save a little bit of disk space with this:
@@ -101,12 +101,12 @@ OBJDIR = ../src
 
 # yacc/lex programs to use to generate *_comp.h, *_lex.c, and *_yacc.c.
 # if, instead of yacc/lex you have bison/flex, comment/uncomment the following.
-YACC     = yacc
-LEX      = lex
-# YACC     = bison -y
+# YACC     = yacc
+# LEX      = lex
+YACC     = bison -y
 # YACC     = byacc
-# LEX      = flex
- 
+LEX      = flex
+
 # these are the names of the output files from YACC/LEX. Under MS-DOS
 # and similar systems, they may differ
 YTABC = y.tab.c
